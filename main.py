@@ -9,9 +9,12 @@ def print_table(site_url, table_class_name):
     import pandas as pd
 
     # Get a plane text of site page
-    response = requests.get(site_url)
+    try:
+        response = requests.get(site_url)
+    except:
+        print(f'Some problem with the site "{site_url}"')
+        return 2
     soup = BeautifulSoup(response.text, 'html.parser')
-
     # Search given table  by tag 'class:'
     table = soup.find('table', attrs={'class': table_class_name})
 
