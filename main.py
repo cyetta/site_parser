@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
+from bs4 import BeautifulSoup
+import requests
+import pandas as pd
+
 
 #  Parse a site to search and display a given table
 #  return 0 if all ok, 1 if given table not find, 2 if some problem with site
 #  example print_table('https://www.w3schools.com/html/html_tables.asp', 'ws-table-all')
 def print_table(site_url, table_class_name):
-
-    from bs4 import BeautifulSoup
-    import requests
-    import pandas as pd
-
     # Get a plane text of site page
     try:
         response = requests.get(site_url)
